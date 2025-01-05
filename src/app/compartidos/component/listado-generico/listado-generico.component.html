@@ -1,0 +1,8 @@
+@if(!listado){
+    <img src="Loding.gif" alt="">
+    }@else if(listado.length === 0){
+        <p>No hay peliculas para mostrar</p>
+    }@else{
+        <ng-content select="[contenido]"></ng-content>
+
+    }
