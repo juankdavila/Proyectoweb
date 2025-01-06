@@ -1,6 +1,5 @@
-<input type="file" style="display:none;" #CargadorArchivos>
-<button (click)="CargadorArchivos.click()">Cargar Archivo</button>
-
+<app-menu></app-menu>
+<app-rating [maximoRating]="5" (votado)="procesarvoto($event)"></app-rating>
 <h1>En Cine</h1>
 
 <app-listado-peliculas [listadoPeliculas]="peliculasEnCine"></app-listado-peliculas>

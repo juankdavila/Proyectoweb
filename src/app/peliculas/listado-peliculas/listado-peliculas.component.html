@@ -18,7 +18,7 @@
                         <p>{{pelicula.titulo | uppercase}}</p>
                         <p>{{pelicula.fechaLanzamiento | date:'dd-MMM-yyyy'}}</p>
                         <p>{{pelicula.precio | currency}}</p>
-                        <button (click)="RemoverPelicula(pelicula)">Eliminar pelicula</button>
+                        <button mat-flat-button (click)="RemoverPelicula(pelicula)"><mat-icon>delete</mat-icon>Eliminar pelicula</button>
                     </div>
                 </div>
             </div>
