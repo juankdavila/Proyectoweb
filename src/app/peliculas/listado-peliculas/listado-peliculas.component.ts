@@ -2,7 +2,6 @@ import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
 import { ListadoGenericoComponent } from '../../compartidos/component/listado-generico/listado-generico.component';
 import {MatIconModule} from '@angular/material/icon';
-
 import {MatButtonModule} from '@angular/material/button';
 
 

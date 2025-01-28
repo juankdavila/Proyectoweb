@@ -1,0 +1,5 @@
+input{
+    margin-top: 25px; /* Espaciado superior para separar acciones */
+    display: flex;
+    gap: 1000px; 
+}

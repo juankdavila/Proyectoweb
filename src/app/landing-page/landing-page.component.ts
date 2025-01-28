@@ -36,16 +36,17 @@ export class LandingPageComponent implements OnInit {
           precio : 15.00,
           poster : 'https://upload.wikimedia.org/wikipedia/en/thumb/7/73/Moana_2_poster.jpg/220px-Moana_2_poster.jpg'
     
-        }
-      ]
-        this.peliculasEnEstreno=[
-        
+        },
         {
           titulo : "Rey León 1 1/2",
           fechaLanzamiento : new Date('2025-1-1'),
           precio : 8.00,
           poster :'https://upload.wikimedia.org/wikipedia/en/a/a9/Lion_king_1_half_cover.jpg'
         },
+      ]
+        this.peliculasEnEstreno=[
+        
+        
         {
           titulo : "Superman",
           fechaLanzamiento : new Date('2025-1-25'),
