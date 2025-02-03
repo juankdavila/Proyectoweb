@@ -14,6 +14,6 @@ export class CrearActorComponent {
 router = inject(Router);
 
   guardarCambios(actor: ActoresCreacionDTO){
-    console.log('Insertar actor', actor);
+    this.router.navigate(['Insertar actores', actor]);
 }
 }

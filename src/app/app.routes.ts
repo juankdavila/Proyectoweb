@@ -10,6 +10,8 @@ import { CrearCineComponent } from './Cines/crear-cine/crear-cine.component';
 import { IndiceCinesComponent } from './Cines/indice-cines/indice-cines.component';
 import { EditarGeneroComponent } from './generos/editar-genero/editar-genero.component';
 import { EditarActorComponent } from './Actores/editar-actor/editar-actor.component';
+import { EditarPeliculaComponent } from './peliculas/editar-pelicula/editar-pelicula.component';
+import { EditarCineComponent } from './Cines/editar-cine/editar-cine.component';
 
 export const routes: Routes = [
     
@@ -22,8 +24,11 @@ export const routes: Routes = [
     {path: 'actores/editar/:id', component:EditarActorComponent},
     {path: 'peliculas', component:IndicePeliculaComponent},
     {path: 'peliculas/crear', component:CrearPeliculaComponent},
+    {path: 'peliculas/editar/:id', component: EditarPeliculaComponent},
     {path: 'cines', component:IndiceCinesComponent},
     {path: 'cines/crear', component:CrearCineComponent},
+    {path: 'cines/editar/:id', component: EditarCineComponent},
+    
     
 
 

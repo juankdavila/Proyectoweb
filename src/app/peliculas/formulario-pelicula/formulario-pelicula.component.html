@@ -1,0 +1,52 @@
+<form [formGroup]="form" (submit)="guardarCambios()">
+    <mat-form-field appearance="outline">
+        <mat-label>Titulo</mat-label>
+        <input matInput  [formControl]="this.form.controls.titulo">
+        <mat-error>{{obtenerErrorCampoTitulo()}}</mat-error>
+    </mat-form-field>
+
+
+    <div>
+        <mat-form-field appearance="outline">
+            <mat-label>Fecha de Lanzamiento</mat-label>
+            <input matInput [matDatepicker]="picker" [formControl]="this.form.controls.fechaLanzamiento">
+            <mat-hint>MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+            <mat-error>{{obtenerErrorCampoFechaLanzamiento()}}</mat-error>
+        </mat-form-field>
+    </div>
+    <br>
+    <div>
+        <mat-form-field appearance="outline">
+            <mat-label>URL del trailer</mat-label>
+            <input matInput [formControl]="this.form.controls.trailer">
+            <mat-error>{{obtenerErrorCampoTrailer()}}</mat-error>
+        </mat-form-field>
+    </div>
+    <div>
+        <app-input-img 
+            [urlImagenActual]="modelo?.poster"
+            titulo="Poster de la Pelicula" (archivoSeleccionado)="archivoSeleccionado($event)" >
+        </app-input-img>
+    </div>
+
+    <div>
+        @if (form.controls.trailer.value) {
+            @if (esUrlValida(form.controls.trailer.value)) {
+                <source [src]="form.controls.trailer.value" type="video/mp4">
+                Tu navegador no soporta el formato de video.
+            } @else {
+                <div>
+                    <button mat-stroked-button (click)="abrirEnNuevaVentana(form.controls.trailer.value)">Ver trailer</button>
+                </div>
+                
+            }
+        }
+    </div>
+    <div class="contenedor-botones">
+        <button mat-flat-button type="submit" [disabled]="form.invalid">Guardar Cambios</button>
+        <a mat-stroked-button routerLink="/peliculas">Cancelar</a>        
+    </div>
+    
+</form>

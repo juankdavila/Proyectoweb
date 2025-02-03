@@ -1,17 +1,20 @@
 import { Component, inject } from '@angular/core';
+import { Router } from '@angular/router';
+import { FormularioPeliculaComponent } from '../formulario-pelicula/formulario-pelicula.component';
+import { PeliculasCreacionDTO } from '../peliculas';
 import { MatButtonModule } from '@angular/material/button';
-import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-crear-pelicula',
-  imports: [MatButtonModule],
+  imports: [MatButtonModule,FormularioPeliculaComponent],
   templateUrl: './crear-pelicula.component.html',
-  styleUrl: './crear-pelicula.component.css'
+  styleUrls: ['./crear-pelicula.component.css']
 })
 export class CrearPeliculaComponent {
   router = inject(Router);
-  guardarCambios(){
-    this.router.navigate(['/peliculas'])
-  }
 
+  guardarCambios(pelicula: PeliculasCreacionDTO) {
+    this.router.navigate(['Insertar peliculas', pelicula]);
+    
+  }
 }

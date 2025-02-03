@@ -16,3 +16,16 @@ export function primeraLetraMayuscula(): ValidatorFn{
         }
     }
 }
+
+export function fechaNoPuedeSerFutura(): ValidatorFn {
+    return (control: AbstractControl): ValidationErrors | null => {
+        if (!control.value) return null; 
+        const fechaEscogidaPorElUsuario = new Date(control.value);
+        if (isNaN(fechaEscogidaPorElUsuario.getTime())) return null; // Evita errores si el valor es inválido
+        const hoy = new Date();
+        if (fechaEscogidaPorElUsuario > hoy) {
+            return { futuro: { mensaje: 'La Fecha no puede ser del futuro' } };
+        }
+        return null;
+    };
+}
