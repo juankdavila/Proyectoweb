@@ -1,10 +1,11 @@
 import { Component, Input, numberAttribute } from '@angular/core';
 import { FormularioCineComponent } from '../formulario-cine/formulario-cine.component';
 import { CineDTO, CinesCreacionDTO } from '../cines';
+import { MapaComponent } from '../../compartidos/component/mapa/mapa.component';
 
 @Component({
   selector: 'app-editar-cine',
-  imports: [FormularioCineComponent],
+  imports: [FormularioCineComponent, MapaComponent],
   templateUrl: './editar-cine.component.html',
   styleUrl: './editar-cine.component.css'
 })
