@@ -1,15 +1,15 @@
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { GeneroDTO } from './generos';
+import { identity, Observable } from 'rxjs';
+import { GeneroDTO, GenerosCreacionDTO } from './generos';
 import { construirQueryParams } from '../compartidos/component/Funciones/construirQueryParams';
 import { paginacionDTO } from '../compartidos/modelos/paginacionDTO';
 @Injectable({
   providedIn: 'root'
 })
 export class GenerosService {
-
   private http = inject(HttpClient);
+  private urlBase="http://apicodersnet.runasp.net/api/Generos" 
 
 
   constructor() { }
@@ -19,4 +19,11 @@ export class GenerosService {
     ,{params:queryParams,observe: 'response'}
   );
   }
+  public eliminarGeneros(id: number){
+    return this.http.delete(`${this.urlBase}/${id}`)
+  }
+  public crearGeneros(genero: GenerosCreacionDTO){
+    return this.http.post(this.urlBase,genero);
+  }
+  
 }
