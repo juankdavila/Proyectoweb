@@ -31,7 +31,7 @@
         <th mat-header-cell *matHeaderCellDef> accion </th>
         <td mat-cell *matCellDef="let element"> 
         <a mat-flat-button routerLink="/actores/editar/{{element.id}}"> Editar</a>
-        <button mat-flat-button (click)="borrar()" style= "Background-color: red">Borrar</button>
+        <button mat-flat-button style= "Background-color: red" (click)="borrar()" >Borrar</button>
         </td>
     </ng-container>
 

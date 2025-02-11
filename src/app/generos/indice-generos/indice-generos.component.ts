@@ -16,6 +16,33 @@ import Swal from 'sweetalert2'
   styleUrl: './indice-generos.component.css'
 })
 export class IndiceGenerosComponent {
+  borrar(idUnico: number){
+    Swal.fire({
+      title: "¿Esta Seguro de eliminar este registro",
+      text: " Esta accion es irreversible!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      cancelButtonText: "cancelar",
+      confirmButtonText: "Si quiero, eliminar !"
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.generos.eliminarGeneros(idUnico).subscribe(resultado => {
+          console.log(resultado);
+          this.cargarlistaGeneros();
+        Swal.fire({
+          title: "Deleted!",
+          text: "Your file has been deleted.",
+          icon: "success"
+        });
+        });
+      }
+      
+    });
+
+    
+  }
   
   
   columnaMostrar: String[] = ['id', 'Nombre','accion'];

@@ -39,7 +39,7 @@ export class IndiceActoresComponent {
     }
   
   columnaMostrar: String[] = ['id', 'nombre','fechaNacimiento', 'foto','accion'];
-  cines = inject(ActoresService);
+  actores = inject(ActoresService);
   listaActores!: ActorDTO[];
   paginacion:paginacionDTO={pagina:1,recordsPorPagina:5}
   cantidadTotalRegistros!:number;
@@ -47,7 +47,7 @@ export class IndiceActoresComponent {
     this.cargarlistaActores();
   }
   cargarlistaActores(){
-    this.cines.obtenerActoresPaginacion(this.paginacion)
+    this.actores.obtenerActoresPaginacion(this.paginacion)
     .subscribe((respuesta:HttpResponse<ActorDTO[]>) =>{
       this.listaActores=respuesta.body as ActorDTO[]; 
       console.log(this.listaActores);
