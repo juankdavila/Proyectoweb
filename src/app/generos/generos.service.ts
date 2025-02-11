@@ -8,9 +8,7 @@ import { paginacionDTO } from '../compartidos/modelos/paginacionDTO';
   providedIn: 'root'
 })
 export class GenerosService {
-  obtenerGeneros() {
-    throw new Error('Method not implemented.');
-  }
+
   private http = inject(HttpClient);
 
 

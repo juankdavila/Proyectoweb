@@ -7,6 +7,7 @@ import {MatTableModule} from '@angular/material/table';
 import {MatPaginatorModule, PageEvent} from '@angular/material/paginator';
 import { paginacionDTO } from '../../compartidos/modelos/paginacionDTO';
 import { HttpResponse } from '@angular/common/http';
+import Swal from 'sweetalert2'; 
 
 @Component({
   selector: 'app-indice-generos',
@@ -15,6 +16,28 @@ import { HttpResponse } from '@angular/common/http';
   styleUrl: './indice-generos.component.css'
 })
 export class IndiceGenerosComponent {
+
+  borrar(){
+    Swal.fire({
+      title: "Esta seguro de eliminar este registro?",
+      text: "Esta acción es irreversible!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      cancelButtonText: "Cancelar!",
+      confirmButtonText: "Si, quiero eliminar"
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire({
+          title: "Eliminado!",
+          text: "Registro eliminado.",
+          icon: "success"
+        });
+      }
+    });
+  }
+  
   columnaMostrar: String[] = ['id', 'Nombre','accion'];
   
 generos = inject(GenerosService);
@@ -42,7 +65,7 @@ cantidadTotalRegistros!:number;
     this.paginacion ={pagina:datos.pageIndex+1, recordsPorPagina:datos.pageSize}
     this.cargarlistaGeneros();
   }
-   
+  
 }
 
 

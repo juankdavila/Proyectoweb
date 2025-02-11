@@ -1,7 +1,9 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpResponse } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ActorDTO } from './actores';
+import { paginacionDTO } from '../compartidos/modelos/paginacionDTO';
+import { construirQueryParams } from '../compartidos/component/Funciones/construirQueryParams';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +14,10 @@ export class ActoresService {
   
   
     constructor() { }
-    public obtenerActores(): Observable<ActorDTO[]> { 
-      return this.http.get<ActorDTO[]>("http://apicodersnet.runasp.net/api/actores");
+    public obtenerActoresPaginacion(paginacion: paginacionDTO): Observable<HttpResponse<ActorDTO[]>> {
+      let queryParams = construirQueryParams(paginacion); 
+      return this.http.get<ActorDTO[]>("http://apicodersnet.runasp.net/api/Actores"
+      ,{params:queryParams,observe: 'response'}
+    );
     }
 }
