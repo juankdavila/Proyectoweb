@@ -5,7 +5,7 @@ import { MapaComponent } from '../../compartidos/component/mapa/mapa.component';
 
 @Component({
   selector: 'app-editar-cine',
-  imports: [FormularioCineComponent, MapaComponent],
+  imports: [FormularioCineComponent],
   templateUrl: './editar-cine.component.html',
   styleUrl: './editar-cine.component.css'
 })
