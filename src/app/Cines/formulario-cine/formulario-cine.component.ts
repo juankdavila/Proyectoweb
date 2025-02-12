@@ -1,11 +1,11 @@
 import { Component, EventEmitter, inject, Input, Output } from '@angular/core';
-import { CineDTO, CinesCreacionDTO } from '../cines';
+import { CinesCreacionDTO } from '../cines';
 import { FormBuilder, FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { RouterLink } from '@angular/router';
-import { Coordenadas } from '../../compartidos/component/mapa/coordenadas';
+import { Coordenada } from '../../compartidos/component/mapa/coordenadas';
 import { MapaComponent } from '../../compartidos/component/mapa/mapa.component';
 
 @Component({
@@ -18,16 +18,16 @@ export class FormularioCineComponent {
   ngOnInit(): void {
     if(this.modelo !== undefined){
       this.form.patchValue(this.modelo);
-     this.coordenadasIniciales.push({latitud:this.modelo.latitud,longitug:this.modelo.longitug});
+      this.coordenadasIniciales.push({latitud:this.modelo.latitud,longitug:this.modelo.longitug});
     }
   }
 //,{validators: [Validators.required, primeraLetraMayuscula()]}
   @Output()
   posteoFormulario = new EventEmitter<CinesCreacionDTO>();
 
-  @Input() modelo?: CineDTO;
+  @Input() modelo?: CinesCreacionDTO;
 
-  @Input() coordenadasIniciales: Coordenadas[]= [];
+  @Input() coordenadasIniciales: Coordenada[]= [];
 
 
   mensajeExito: string = ''; 
@@ -54,7 +54,7 @@ export class FormularioCineComponent {
     }*/
     
   }
-  coordenadaSeleccionada(coordenada:Coordenadas){
+  coordenadaSeleccionada(coordenada:Coordenada){
     this.form.patchValue(coordenada);
   }
 

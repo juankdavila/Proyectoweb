@@ -5,6 +5,7 @@ import { FormularioGenerosComponent } from '../formulario-generos/formulario-gen
 import { MatSnackBar} from '@angular/material/snack-bar';
 import { GenerosService } from '../generos.service';
 import { Router } from '@angular/router';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-crear-generos',
@@ -18,15 +19,24 @@ export class CrearGenerosComponent {
   private _snackBar = inject(MatSnackBar);
 
   guardarCambios(genero: GenerosCreacionDTO){
-    this.generosService.crearGeneros(genero).subscribe(resulta => {
-      console.log(resulta);
-      this.opensSnackBar();
-      this.router.navigate(['/generos']);
-    })
-    
+    console.log('Insertar genero', genero);
+    this.generosService.crearGeneros(genero).subscribe({
+      next: (genero)=>{
+        this.router.navigate(['/generos']);
+        this.openSnackBar(" Se guardo con exito el registro de genero");
+      },
+      error: (error:HttpErrorResponse) => {
+        if (error.error === 404) {
+          this.openSnackBar("El género no fue encontrado")
+        } else {
+        this.openSnackBar('Ocurrió un error desconocido');
+        }
+      }
+    });
+
   }
-  opensSnackBar(){
-    this._snackBar.open("Se guardo con exito el registro", "ok",{
+  openSnackBar( message: string){
+    this._snackBar.open(message, "",{
       duration: 4 *1000,
     });
   }

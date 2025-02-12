@@ -1,7 +1,7 @@
 import { Component, Input, numberAttribute } from '@angular/core';
 import { FormularioCineComponent } from '../formulario-cine/formulario-cine.component';
 import { CineDTO, CinesCreacionDTO } from '../cines';
-import { MapaComponent } from '../../compartidos/component/mapa/mapa.component';
+
 
 @Component({
   selector: 'app-editar-cine',
@@ -17,8 +17,7 @@ export class EditarCineComponent {
       id: 1, nombre: 'Supercines',latitud:2,longitug:5
     } 
     guardarCambios(cine: CinesCreacionDTO){
-      console.log('Editar cine', cine);
-       //console.log(this.form.value);
-       //this.router.navigate(['/generos']);
+      console.log('Editar cine',cine);
+      
     }
 }
