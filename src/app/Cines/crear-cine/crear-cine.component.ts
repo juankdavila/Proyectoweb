@@ -15,6 +15,7 @@ export class CrearCineComponent {
 router = inject(Router);
 
 guardarCambios(cine: CinesCreacionDTO){
-    this.router.navigate(['Insertar cines', cine]);
+  console.log("Crear cine: "+ cine);
+  //this.router.navigate(['Insertar cines', cine]);
 }
 }

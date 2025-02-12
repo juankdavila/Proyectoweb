@@ -26,5 +26,14 @@ export class GenerosService {
   public crearGeneros(genero: GenerosCreacionDTO){
     return this.http.post(this.urlBase,genero);
   }
+  public obtenerGeneroPorId(generoId: number):Observable<GeneroDTO>{
+    return this.http.get<GeneroDTO>(`${this.urlBase}/${generoId}`);
+
+  }
+
+  public actualizarGeneros(generoId: number, genero: GenerosCreacionDTO){
+    return this.http.put(`${this.urlBase}/${generoId}`,genero)
+
+  }
   
 }

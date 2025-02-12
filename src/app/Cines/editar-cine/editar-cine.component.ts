@@ -14,7 +14,7 @@ export class EditarCineComponent {
   id! : number;
   
     cine:CineDTO = {
-      id: 1, nombre: 'Supercines',
+      id: 1, nombre: 'Supercines',latitud:2,longitug:5
     } 
     guardarCambios(cine: CinesCreacionDTO){
       console.log('Editar cine', cine);

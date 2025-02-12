@@ -1,5 +1,7 @@
 export interface CinesCreacionDTO{
     nombre: string;
+    latitud: number;
+    longitug: number;
     
 }
 
@@ -7,5 +9,7 @@ export interface CinesCreacionDTO{
 export interface CineDTO{
     id:number,
     nombre: string;
+    latitud: number;
+    longitug: number;
 
 }
