@@ -26,13 +26,13 @@ export class FormularioGenerosComponent implements OnInit {
   @Input() modelo?: GeneroDTO;
 
 
-  mensajeExito: string = ''; 
+
   private formBuilder = inject(FormBuilder);
 
   form = this.formBuilder.group({
     nombre: ['',{validators:[Validators.required]}]
   });
-    
+  
 
   obteneMensajeError(): string{
     let nombre = this.form.controls.nombre;
@@ -58,27 +58,9 @@ export class FormularioGenerosComponent implements OnInit {
     const genero = this.form.value as GenerosCreacionDTO;
     this.posteoFormulario.emit(genero);
 
-    this.mensajeExito = `Género ${genero.nombre} guardado correctamente!`;
-
-    // Limpiar el formulario si es necesario
-    this.form.reset();
-  }
-  archivoUrl: string | undefined;
-
-  onFileSelected(event: Event) {
-    const input = event.target as HTMLInputElement;
-  
-    if (input.files && input.files.length > 0) {
-      const file = input.files[0];
-  
-      // Leer la imagen seleccionada
-      const reader = new FileReader();
-      reader.onload = () => {
-        this.archivoUrl = reader.result as string; // Almacenar la URL de la imagen cargada
-      };
-      reader.readAsDataURL(file); // Convertir el archivo a Base64
-    }
   }
 
-  
+
+
+
 }

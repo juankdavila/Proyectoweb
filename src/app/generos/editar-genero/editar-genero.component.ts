@@ -2,8 +2,8 @@ import { Component, inject, Inject, Input, numberAttribute, OnInit } from '@angu
 import { FormularioGenerosComponent } from "../formulario-generos/formulario-generos.component";
 import { GeneroDTO, GenerosCreacionDTO } from '../generos';
 import { GenerosService } from '../generos.service';
-import { Router } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-editar-genero',
@@ -11,7 +11,7 @@ import { HttpErrorResponse } from '@angular/common/http';
   templateUrl: './editar-genero.component.html',
   styleUrl: './editar-genero.component.css'
 })
-export class EditarGeneroComponent implements OnInit{
+export class EditarGenerosComponent implements OnInit{
 
   ngOnInit(): void {
     this.obtenerGeneroPorId();
@@ -21,7 +21,7 @@ export class EditarGeneroComponent implements OnInit{
   id! : number;
   genero?: GeneroDTO;
   generoService= inject(GenerosService);
-  router = inject(Router);
+  router = inject(Router)
 
   guardarCambios(genero: GenerosCreacionDTO){
     this.generoService.actualizarGeneros(this.id,genero).subscribe({
@@ -31,10 +31,9 @@ export class EditarGeneroComponent implements OnInit{
     error: (error:HttpErrorResponse)=>{
     console.log(error);
     }
-    
+
     });
   }
-
   obtenerGeneroPorId(){
       this.generoService.obtenerGeneroPorId(this.id).subscribe((genero)=>{
         console.log(genero);

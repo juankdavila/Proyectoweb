@@ -11,9 +11,7 @@ import { paginacionDTO } from '../compartidos/modelos/paginacionDTO';
 })
 export class CinesService {
 
-
   private http = inject(HttpClient);
-    
     
   constructor() { }
       public obtenerCinesPaginacion(paginacion: paginacionDTO): Observable<HttpResponse<CineDTO[]>> {

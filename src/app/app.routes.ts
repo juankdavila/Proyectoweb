@@ -8,7 +8,7 @@ import { IndiceActoresComponent } from './Actores/indice-actores/indice-actores.
 import { CrearActorComponent } from './Actores/crear-actor/crear-actor.component';
 import { CrearCineComponent } from './Cines/crear-cine/crear-cine.component';
 import { IndiceCinesComponent } from './Cines/indice-cines/indice-cines.component';
-import { EditarGeneroComponent } from './generos/editar-genero/editar-genero.component';
+import { EditarGenerosComponent } from './generos/editar-genero/editar-genero.component';
 import { EditarActorComponent } from './Actores/editar-actor/editar-actor.component';
 import { EditarPeliculaComponent } from './peliculas/editar-pelicula/editar-pelicula.component';
 import { EditarCineComponent } from './Cines/editar-cine/editar-cine.component';
@@ -18,7 +18,7 @@ export const routes: Routes = [
     {path: '', component:LandingPageComponent},
     {path: 'generos', component:IndiceGenerosComponent},
     {path: 'generos/crear', component:CrearGenerosComponent},
-    {path: 'generos/editar/:id', component:EditarGeneroComponent},
+    {path: 'generos/editar/:id', component:EditarGenerosComponent},
     {path: 'actores', component:IndiceActoresComponent},
     {path: 'actores/crear', component:CrearActorComponent},
     {path: 'actores/editar/:id', component:EditarActorComponent},
