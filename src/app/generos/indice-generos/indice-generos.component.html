@@ -2,6 +2,7 @@
 <button mat-flat-button routerLink="/generos/crear">Crear Géneros</button>
 <button mat-flat-button routerLink="">Cancelar</button>
 
+
 <table mat-table [dataSource]="listaGeneros" class="mat-elevation-z8">
     <ng-container matColumnDef="id">
       <th mat-header-cell *matHeaderCellDef> Id </th>
@@ -26,8 +27,8 @@
     <tr mat-row *matRowDef="let row; columns: columnaMostrar;"></tr>
 </table>
 <mat-paginator [length]="cantidadTotalRegistros"
-              [pageSize]="paginacion"
-              [pageSizeOptions]="[5, 10, 25, 100]"
-              aria-label="Seleccionar pagina"
-              (page)="actualizarPaginacion($event)">
+    [pageSize]="paginacion"
+    [pageSizeOptions]="[5, 10, 25, 100]"
+    aria-label="Seleccionar pagina"
+    (page)="actualizarPaginacion($event)">
 </mat-paginator>

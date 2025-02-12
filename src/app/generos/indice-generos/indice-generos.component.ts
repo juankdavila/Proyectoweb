@@ -16,7 +16,6 @@ import Swal from 'sweetalert2'
   styleUrl: './indice-generos.component.css'
 })
 export class IndiceGenerosComponent {
-
   borrar(idUnico: number){
     Swal.fire({
       title: "¿Esta Seguro de eliminar este registro",
@@ -45,8 +44,10 @@ export class IndiceGenerosComponent {
     
   }
   
-  columnaMostrar: String[] = ['id', 'Nombre','accion'];
   
+  columnaMostrar: String[] = ['id', 'Nombre','accion'];
+
+    
 generos = inject(GenerosService);
 listaGeneros!: GeneroDTO[];
 paginacion:paginacionDTO={pagina:1,recordsPorPagina:5}
@@ -72,7 +73,7 @@ cantidadTotalRegistros!:number;
     this.paginacion ={pagina:datos.pageIndex+1, recordsPorPagina:datos.pageSize}
     this.cargarlistaGeneros();
   }
-   
+  
 }
 
 

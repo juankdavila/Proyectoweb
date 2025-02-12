@@ -8,7 +8,6 @@ import { paginacionDTO } from '../compartidos/modelos/paginacionDTO';
   providedIn: 'root'
 })
 export class GenerosService {
- 
   private http = inject(HttpClient);
   private urlBase="http://apicodersnet.runasp.net/api/Generos" 
 

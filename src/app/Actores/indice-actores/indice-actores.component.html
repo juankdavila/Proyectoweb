@@ -31,11 +31,17 @@
         <th mat-header-cell *matHeaderCellDef> accion </th>
         <td mat-cell *matCellDef="let element"> 
         <a mat-flat-button routerLink="/actores/editar/{{element.id}}"> Editar</a>
-        <button mat-flat-button style= "Background-color: red">Borrar</button>
+        <button mat-flat-button style= "Background-color: red" (click)="borrar()" >Borrar</button>
         </td>
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="columnaMostrar"></tr>
     <tr mat-row *matRowDef="let row; columns: columnaMostrar;"></tr>
 </table>
+<mat-paginator [length]="cantidadTotalRegistros"
+    [pageSize]="paginacion"
+    [pageSizeOptions]="[5, 10, 25, 100]"
+    aria-label="Seleccionar pagina"
+    (page)="actualizarPaginacion($event)">
+</mat-paginator>
 
