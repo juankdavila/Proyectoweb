@@ -1,7 +1,9 @@
-import { Component, Input, numberAttribute } from '@angular/core';
-import { FormularioCineComponent } from '../formulario-cine/formulario-cine.component';
-import { CineDTO, CinesCreacionDTO } from '../cines';
-
+import { Component, inject, Input, numberAttribute, OnInit } from '@angular/core';
+import { CinesCreacionDTO, CineDTO } from '../cines';
+import { FormularioCineComponent } from "../formulario-cine/formulario-cine.component";
+import { Router } from '@angular/router';
+import { CinesService } from '../cines.service';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-editar-cine',
@@ -9,15 +11,33 @@ import { CineDTO, CinesCreacionDTO } from '../cines';
   templateUrl: './editar-cine.component.html',
   styleUrl: './editar-cine.component.css'
 })
-export class EditarCineComponent {
+export class EditarCineComponent implements OnInit{
+  ngOnInit(): void {
+    this.obtenerCinePorId();
+  }
+
   @Input({transform: numberAttribute})
   id! : number;
+  cine!: CineDTO;
+  cineService= inject(CinesService);
+  router = inject(Router);
+
+  guardarCambios(cine : CinesCreacionDTO ){
+    this.cineService.actualizarCines(this.id,cine).subscribe({
+      next: ()=>{
+        this.router.navigate(['/cines']);
+      },
+      error: (error:HttpErrorResponse)=>{
+        console.log(error);
+      }
+    });
+  }
   
-    cine:CineDTO = {
-      id: 1, nombre: 'Supercines',latitud:2,longitug:5
-    } 
-    guardarCambios(cine: CinesCreacionDTO){
-      console.log('Editar cine',cine);
-      
-    }
+  obtenerCinePorId(){
+    this.cineService.ObtenerCinePorId(this.id).subscribe((cine)=>{
+      console.log(cine);
+      this.cine=cine;
+    });
+}
+
 }

@@ -1,4 +1,4 @@
 export interface paginacionDTO{
-    pagina: number;
-    recordsPorPagina: number;
+    pagina:number;
+    recordsPorPagina:number;
 }

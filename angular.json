@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "Proyectoweb": {
+    "proyectoWeb": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/proyectoweb",
+            "outputPath": "dist/proyecto-web",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -48,8 +48,8 @@
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "4kB",
-                  "maximumError": "8kB"
+                  "maximumWarning": "2kB",
+                  "maximumError": "4kB"
                 }
               ],
               "outputHashing": "all"
@@ -66,10 +66,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "Proyectoweb:build:production"
+              "buildTarget": "proyectoWeb:build:production"
             },
             "development": {
-              "buildTarget": "Proyectoweb:build:development"
+              "buildTarget": "proyectoWeb:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -89,11 +89,6 @@
               {
                 "glob": "**/*",
                 "input": "public"
-              },
-              {
-                "glob": "**/*",
-                "input": "./node_modules/leaflet/dist/images",
-                "output": "assets/"
               }
             ],
             "styles": [
@@ -108,6 +103,6 @@
     }
   },
   "cli": {
-    "analytics": "f56230c6-8731-4e03-af35-c2c23fc5d1b3"
+    "analytics": "443699f4-bda7-4d84-82dc-cd6a7fc4c960"
   }
 }

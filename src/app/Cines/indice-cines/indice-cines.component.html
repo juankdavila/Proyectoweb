@@ -14,18 +14,29 @@
       <th mat-header-cell *matHeaderCellDef> Nombre </th>
       <td mat-cell *matCellDef="let element"> {{element.nombre}} </td>
     </ng-container>
+    <!-- Name Column -->
+    <ng-container matColumnDef="latitud">
+      <th mat-header-cell *matHeaderCellDef> Latitud </th>
+      <td mat-cell *matCellDef="let element"> {{element.latitud}} </td>
+    </ng-container>
+    <!-- Name Column -->
+    <ng-container matColumnDef="longitud">
+      <th mat-header-cell *matHeaderCellDef> Longitud </th>
+      <td mat-cell *matCellDef="let element"> {{element.longitud}} </td>
+    </ng-container>
 
     <ng-container matColumnDef="accion">
-        <th mat-header-cell *matHeaderCellDef> accion </th>
-        <td mat-cell *matCellDef="let element"> 
-        <a mat-flat-button routerLink="/cines/editar/{{element.id}}"> Editar</a>
-        <button mat-flat-button (click)="borrar()" style= "Background-color: red">Borrar</button>
-        </td>
+      <th mat-header-cell *matHeaderCellDef> Acción </th>
+      <td mat-cell *matCellDef="let cine"> 
+      <a mat-flat-button routerLink="/cines/editar/{{cine.id}}"> Editar</a>
+      <button mat-flat-button style= "Background-color: red" (click)="borrar(cine.id)">Borrar</button>
+      </td>
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="columnaMostrar"></tr>
     <tr mat-row *matRowDef="let row; columns: columnaMostrar;"></tr>
 </table>
+
 <mat-paginator [length]="cantidadTotalRegistros"
     [pageSize]="paginacion"
     [pageSizeOptions]="[5, 10, 25, 100]"

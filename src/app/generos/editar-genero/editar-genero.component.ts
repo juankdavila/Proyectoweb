@@ -2,8 +2,8 @@ import { Component, inject, Inject, Input, numberAttribute, OnInit } from '@angu
 import { FormularioGenerosComponent } from "../formulario-generos/formulario-generos.component";
 import { GeneroDTO, GenerosCreacionDTO } from '../generos';
 import { GenerosService } from '../generos.service';
-import { HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-editar-genero',
@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
   templateUrl: './editar-genero.component.html',
   styleUrl: './editar-genero.component.css'
 })
-export class EditarGenerosComponent implements OnInit{
+export class EditarGeneroComponent implements OnInit{
 
   ngOnInit(): void {
     this.obtenerGeneroPorId();
@@ -21,23 +21,28 @@ export class EditarGenerosComponent implements OnInit{
   id! : number;
   genero?: GeneroDTO;
   generoService= inject(GenerosService);
-  router = inject(Router)
+  router = inject(Router);
 
   guardarCambios(genero: GenerosCreacionDTO){
     this.generoService.actualizarGeneros(this.id,genero).subscribe({
-    next: ()=>{
-    this.router.navigate(['/generos']);
-    },
-    error: (error:HttpErrorResponse)=>{
-    console.log(error);
-    }
+      next: ()=>{
+        this.router.navigate(['/generos']);
+      },
+      error: (error:HttpErrorResponse)=>{
+        console.log(error);
+      }
+     });
+   }
 
-    });
-  }
-  obtenerGeneroPorId(){
-      this.generoService.obtenerGeneroPorId(this.id).subscribe((genero)=>{
+   obtenerGeneroPorId(){
+      this.generoService.ObtenerGeneroPorId(this.id).subscribe((genero)=>{
         console.log(genero);
         this.genero=genero;
       });
-  }
+   }
+
+
+
+ 
+
 }

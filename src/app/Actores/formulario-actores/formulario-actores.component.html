@@ -21,8 +21,8 @@
         titulo="Foto del Actor" (archivoSeleccionado)="archivoSeleccionado($event)"  ></app-input-img>
     </div>
 
-    <div class="contenedor-botones">
-        <button mat-flat-button type="submit" [disabled]="form.invalid" >Guardar Cambios</button>
+    <div>
+        <button mat-flat-button type="submit" [disabled]="form.invalid">Guardar Cambios</button>
         <a mat-stroked-button routerLink="/actores">Cancelar</a>        
     </div>
 </form>

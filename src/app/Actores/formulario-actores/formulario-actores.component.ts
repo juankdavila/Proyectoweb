@@ -10,6 +10,7 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import {provideNativeDateAdapter} from '@angular/material/core';
 import { InputImgComponent } from "../../compartidos/component/input-img/input-img.component";
 import { RouterLink } from '@angular/router';
+import moment from 'moment';
 
 @Component({
   selector: 'app-formulario-actores',
@@ -66,14 +67,15 @@ export class FormularioActoresComponent implements OnInit {
   }
 
   guardarCambios(){
-    console.log(this.form.value);
-
     if(!this.form.valid){
       return;
     }
 
-    const actor = this.form.value as ActoresCreacionDTO;
-    this.posteoFormulario.emit(actor);
+    
+        const actor = this.form.value as ActoresCreacionDTO;
+        actor.fechaNacimiento= moment(actor.fechaNacimiento).toDate();
+        console.log('Cine a enviar:', actor); 
+        this.posteoFormulario.emit(actor);  
 
   }
 

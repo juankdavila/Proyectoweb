@@ -34,6 +34,11 @@ export class FormularioGenerosComponent implements OnInit {
   });
   
 
+
+
+
+
+
   obteneMensajeError(): string{
     let nombre = this.form.controls.nombre;
     if(nombre.hasError('required')){
@@ -49,7 +54,10 @@ export class FormularioGenerosComponent implements OnInit {
   }
 
   guardarCambios(){
+    
     console.log(this.form.value);
+  
+
 
     if(!this.form.valid){
       return;
@@ -64,3 +72,4 @@ export class FormularioGenerosComponent implements OnInit {
 
 
 }
+

@@ -6,7 +6,7 @@ import { CineDTO } from '../cines';
 import {MatTableModule} from '@angular/material/table';
 import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
 import { paginacionDTO } from '../../compartidos/modelos/paginacionDTO';
-import { HttpResponse } from '@angular/common/http';
+import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
 import Swal from 'sweetalert2'; 
 
 @Component({
@@ -16,37 +16,21 @@ import Swal from 'sweetalert2';
   styleUrl: './indice-cines.component.css'
 })
 export class IndiceCinesComponent {
-  borrar(){
-        Swal.fire({
-          title: "Esta seguro de eliminar este registro?",
-          text: "Esta acción es irreversible!",
-          icon: "warning",
-          showCancelButton: true,
-          confirmButtonColor: "#3085d6",
-          cancelButtonColor: "#d33",
-          cancelButtonText: "Cancelar!",
-          confirmButtonText: "Si, quiero eliminar"
-        }).then((result) => {
-          if (result.isConfirmed) {
-            Swal.fire({
-              title: "Eliminado!",
-              text: "Registro eliminado.",
-              icon: "success"
-            });
-          }
-        });
-      }
-  columnaMostrar: String[] = ['id', 'nombre','accion'];
+  
+  columnaMostrar: String[] = ['id', 'nombre', 'latitud', 'longitud','accion'];
 
-  cines = inject(CinesService);
+  
+  cinesService= inject(CinesService);
   listaCines!: CineDTO[];
+
   paginacion:paginacionDTO={pagina:1,recordsPorPagina:5}
   cantidadTotalRegistros!:number;
+
   constructor(){
-    this.cargarlistaCines();
+    this.cargarListadoCines();
   }
-  cargarlistaCines(){
-    this.cines.obtenerCinesPaginacion(this.paginacion)
+  cargarListadoCines(){
+    this.cinesService.obtenerCinesPaginacion(this.paginacion)
     .subscribe((respuesta:HttpResponse<CineDTO[]>) =>{
       this.listaCines=respuesta.body as CineDTO[]; 
       console.log(this.listaCines);
@@ -59,7 +43,48 @@ export class IndiceCinesComponent {
   actualizarPaginacion(datos:PageEvent){
   console.log("PAGINACION");
   this.paginacion ={pagina:datos.pageIndex+1, recordsPorPagina:datos.pageSize}
-  this.cargarlistaCines();
+  this.cargarListadoCines();
   }
+  borrar(idUnico:number){
+      console.log("Este es el id a eliminar"+idUnico);
+      Swal.fire({
+        title: "¿Esta seguro de elimnar este registro?",
+        text: "Esta accion es irreversible!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        cancelButtonText:'Cancelar',
+        confirmButtonText: "Si, quiero eliminar!"
+      }).then((result) => {
+        if (result.isConfirmed) {
+          this.cinesService.eliminarCines(idUnico).subscribe({
+            next: (cineEliminar)=>{
+            this.cargarListadoCines();
+              Swal.fire({
+                title: "Se elimino correctamente!",
+                text: "Your file has been deleted.",
+                icon: "success"
+              })
+            },
+            error: (error:HttpErrorResponse)=>{
+              if(error.status === 404){
+                Swal.fire({
+                  icon: "error",
+                  title: "Oops...",
+                  text: "Lo sentimos ocurrió un error al eliminar el cine: "+error.statusText,
+                });
+              }else{
+                Swal.fire({
+                  icon: "error",
+                  title: "Oops...",
+                  text: error.message,
+                });
+              }
+            }
+          });
+        }
+      });
+    }
 
 }

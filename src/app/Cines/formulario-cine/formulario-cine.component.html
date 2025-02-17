@@ -4,14 +4,28 @@
         <input matInput  [formControl]="this.form.controls.nombre">
         <mat-error>{{obteneMensajeError()}}</mat-error>
     </mat-form-field> 
+    <br>
+    <mat-form-field appearance="outline">
+        <mat-label>Latitud</mat-label>
+        <input matInput  [formControl]="this.form.controls.latitud">
+        <mat-error>{{obteneMensajeError()}}</mat-error>
+    </mat-form-field> 
+    <br>
+
+    <mat-form-field appearance="outline">
+        <mat-label>Longitud</mat-label>
+        <input matInput  [formControl]="this.form.controls.longitud">
+        <mat-error>{{obteneMensajeError()}}</mat-error>
+    </mat-form-field> 
+    <br>
 
     <h4>Seleccione la ubicacion del cine</h4>
 
     <app-mapa [coordenadasIniciales]="coordenadasIniciales" 
     (CoordenadaSeleccionada)="coordenadaSeleccionada($event)"></app-mapa>
     
-    <div class="acciones">
-        <button mat-flat-button type="submit" [disabled]="form.invalid">Guardar Cambios</button>
-        <a mat-stroked-button routerLink="/cines">Cancelar</a>
+    <div>
+        <button mat-flat-button type="submit" [disabled]="form.invalid" >Guardar Cambios</button>
+        <a mat-stroked-button routerLink="/Cines">Cancelar</a>        
     </div>
 </form>

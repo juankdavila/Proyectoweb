@@ -12,7 +12,7 @@ import { Coordenada } from './coordenadas';
 export class MapaComponent implements OnInit {
   ngOnInit(): void{
     this.capas=this.coordenadasIniciales.map(valor =>{
-      const marcador = marker([valor.latitud,valor.longitug],this.markerOptions);
+      const marcador = marker([valor.latitud,valor.longitud],this.markerOptions);
       return marcador;
     });
   }
@@ -27,7 +27,7 @@ export class MapaComponent implements OnInit {
       tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 18, attribution: '...' })
     ],
     zoom: 5,
-    center: latLng(46.879966, -121.726909)
+    center: latLng(-2.227457, -79.901634)
   };
 
   markerOptions: MarkerOptions={
@@ -44,10 +44,10 @@ export class MapaComponent implements OnInit {
 
   manejarClick(event: LeafletMouseEvent){
     const latitud = event.latlng.lat;
-      const longitug = event.latlng.lng;
+      const longitud = event.latlng.lng;
       this.capas=[];
-      this.capas.push(marker([latitud,longitug],this.markerOptions));
-      this.CoordenadaSeleccionada.emit({latitud,longitug});
+      this.capas.push(marker([latitud,longitud],this.markerOptions));
+      this.CoordenadaSeleccionada.emit({latitud,longitud});
   }
   
 }
