@@ -24,7 +24,7 @@ export class EditarActorComponent implements OnInit{
 
   guardarCambios(actor: ActoresCreacionDTO) {
     this.actorService.actualizarActores(this.id,actor).subscribe({
-      next: () => {
+      next: (actor) => {
         this.router.navigate(['/actores']); 
       },
       error: (error:HttpErrorResponse) => {

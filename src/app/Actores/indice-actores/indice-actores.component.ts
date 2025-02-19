@@ -3,16 +3,18 @@ import { MatButtonModule } from '@angular/material/button';
 import { RouterLink } from '@angular/router';
 import { ActoresService } from '../actores.service';
 import { ActorDTO } from '../actores';
-import {MatTableModule} from '@angular/material/table';
+import {MatTableDataSource,MatTableModule} from '@angular/material/table';
 import { paginacionDTO } from '../../compartidos/modelos/paginacionDTO';
 import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
 import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
 import Swal from 'sweetalert2'; 
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 
 
 @Component({
   selector: 'app-indice-actores',
-  imports: [MatButtonModule,RouterLink,MatTableModule,MatPaginatorModule],
+  imports: [MatButtonModule,RouterLink,MatTableModule,MatPaginatorModule,MatFormFieldModule,MatInputModule],
   templateUrl: './indice-actores.component.html',
   styleUrl: './indice-actores.component.css'
 })
@@ -25,6 +27,14 @@ export class IndiceActoresComponent {
   listaActores!: ActorDTO[];
   paginacion:paginacionDTO={pagina:1,recordsPorPagina:5}
   cantidadTotalRegistros!:number;
+
+  // dataSource = new MatTableDataSource(ELEMENT_DATA);
+  dataSource: any; 
+
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
   
   constructor(){
     this.cargarListadoActores();
@@ -38,6 +48,7 @@ export class IndiceActoresComponent {
       console.log(cabecera);
       this.cantidadTotalRegistros=parseInt(cabecera,10)
       console.log(this.cantidadTotalRegistros);
+      this.dataSource= new MatTableDataSource(this.listaActores);
     });
   }
   actualizarPaginacion(datos:PageEvent){

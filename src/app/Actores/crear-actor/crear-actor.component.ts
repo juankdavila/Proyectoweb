@@ -19,7 +19,7 @@ export class CrearActorComponent {
     private _snackBar = inject(MatSnackBar);
   
   guardarCambios(actor: ActoresCreacionDTO){
-      console.log('Insertar cine', actor);
+      console.log('Creando Actor', actor);
       this.actoresService.crearActores(actor).subscribe({
         next: (actor) =>{
           console.log('Respuesta del servidor:', actor);
