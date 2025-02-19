@@ -1,29 +1,30 @@
 <app-listado-generico [listado]="listadoPeliculas">  
     <ng-container contenido>
-
-    <div class="peliculas-contenedor">
+      
+      <div class="peliculas-contenedor">
         @for (pelicula of listadoPeliculas; track $index) {
-            <div class="pelicula-contenedor">
-                <a>
-                    @if(pelicula.poster){
-                        <img [src]="pelicula.poster" width="169" height="250">
-                    }@else {
-                        <img src="https://jkfenner.com/wp-content/uploads/2019/11/default.jpg" width="169" height="250">
-                    }
-                </a>
-                <p>
-                    <a>{{pelicula.titulo}}</a>
-                </p>
-                <div>
-                    <a mat-flat-button >Editar</a>
-                    <button mat-flat-button type="button" color="warn"  style="background-color: rgb(218, 12, 12);">Borrar</button>
-                </div>
+          <div class="pelicula-contenedor">
+            <a>
+              @if(pelicula.poster){
+                <img [src]="pelicula.poster" width="169" height="250">
+              }@else {
+                <img src="https://jkfenner.com/wp-content/uploads/2019/11/default.jpg" width="169" height="250">
+              }
+            </a>
+            <p>
+              <a>{{pelicula.titulo}}</a>
+            </p>
+            <div>
+              <a mat-flat-button >Editar</a>
+              <button mat-flat-button type="button" color="warn"  style="background-color: rgb(218, 12, 12);">Borrar</button>
             </div>
+          </div>
         }
-        </div>
-
+      </div>
+  
     </ng-container>
-</app-listado-generico>
+   </app-listado-generico>
+  
 <!-- 
 <button (click)="agregarPelicula()">Agregar Peliculas</button>
 

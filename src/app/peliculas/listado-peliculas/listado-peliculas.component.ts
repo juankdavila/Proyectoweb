@@ -15,7 +15,7 @@ import {MatButtonModule} from '@angular/material/button';
 export class ListadoPeliculasComponent {
   @Input({required:true}) listadoPeliculas: any=[];
   
-agregarPelicula(){
+/*agregarPelicula(){
     this.listadoPeliculas.push({
       titulo: "Piratas del Caribe",
       fechaLanzamiento: new Date(2029-3-2),
@@ -26,5 +26,5 @@ agregarPelicula(){
 RemoverPelicula(pelicula : any){
   const indice = this.listadoPeliculas.findIndex((peliculaActual:any)=> peliculaActual.titulo === pelicula.titulo);
   this.listadoPeliculas.splice(indice,1);
-}
+}*/
 }
